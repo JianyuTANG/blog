@@ -5,15 +5,20 @@
   
 
   
-  <title>Tang&#39;s Blog</title>
+  <title>techblog_2 | Tang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tang&#39;s Blog">
-<meta property="og:url" content="https://jianyutang.github.io/blog/index.html">
+  <meta name="description" content="关于express框架处理HTTP请求这篇日志主要记录了使用express框架处理http请求的常用方法。对于get和delete请求，网上都很容易找到答案，但post请求中’multipart/form-data’格式中对于文本域信息的处理就很难找到（基本都是处理上传文件的），自己慢慢试了很久才摸索出，因此值得记录下来。">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="techblog_2">
+<meta property="og:url" content="https://jianyutang.github.io/blog/2019/07/11/techblog-2/index.html">
 <meta property="og:site_name" content="Tang&#39;s Blog">
+<meta property="og:description" content="关于express框架处理HTTP请求这篇日志主要记录了使用express框架处理http请求的常用方法。对于get和delete请求，网上都很容易找到答案，但post请求中’multipart/form-data’格式中对于文本域信息的处理就很难找到（基本都是处理上传文件的），自己慢慢试了很久才摸索出，因此值得记录下来。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-11T12:56:17.663Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tang&#39;s Blog">
+<meta name="twitter:title" content="techblog_2">
+<meta name="twitter:description" content="关于express框架处理HTTP请求这篇日志主要记录了使用express框架处理http请求的常用方法。对于get和delete请求，网上都很容易找到答案，但post请求中’multipart/form-data’格式中对于文本域信息的处理就很难找到（基本都是处理上传文件的），自己慢慢试了很久才摸索出，因此值得记录下来。">
   
     <link rel="alternate" href="/blog/atom.xml" title="Tang&#39;s Blog" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-techblog-2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-techblog-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2019/07/11/techblog-2/" class="article-date">
   <time datetime="2019-07-11T12:30:04.000Z" itemprop="datePublished">2019-07-11</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/07/11/techblog-2/">techblog_2</a>
+    <h1 class="article-title" itemprop="name">
+      techblog_2
     </h1>
   
 
@@ -85,11 +88,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="关于express框架处理HTTP请求"><a href="#关于express框架处理HTTP请求" class="headerlink" title="关于express框架处理HTTP请求"></a>关于express框架处理HTTP请求</h1><p>这篇日志主要记录了使用express框架处理http请求的常用方法。对于get和delete请求，网上都很容易找到答案，但post请求中’multipart/form-data’格式中对于文本域信息的处理就很难找到（基本都是处理上传文件的），自己慢慢试了很久才摸索出，因此值得记录下来。</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2019/07/11/techblog-2/#more">Read More</a>
-          </p>
-        
+<a id="more"></a>
+
+<h2 id="POST请求-‘multipart-form-data’格式"><a href="#POST请求-‘multipart-form-data’格式" class="headerlink" title="POST请求(‘multipart/form-data’格式)"></a>POST请求(‘multipart/form-data’格式)</h2><p>根据官方文档，express框架是无法解析post请求中的’multipart/form-data’格式的（使用bodyparser也不行），需要使用推荐的multer库。</p>
+<p>multer库的主要作用是处理表单上传的文件，在这里只用于处理文本内容确实有些杀鸡用牛刀，但也没有更好的办法。具体解析的方法很简单：</p>
+<ul>
+<li>实例化一个 <code>upload=multer()</code> </li>
+<li>在路由 <code>app.post()</code> 中加入 <code>upload.any()</code> ，此时multer解析了文本域的信息，并将这些信息传入请求req的body中</li>
+<li>在方法中通过 <code>req.body.name</code> 即可访问对应的参数</li>
+</ul>
+<p>需要注意，在这里，参数均是字符串形式，如需数字应当 <code>parseInt()</code> 转换。</p>
+<h2 id="GET和DELETE请求"><a href="#GET和DELETE请求" class="headerlink" title="GET和DELETE请求"></a>GET和DELETE请求</h2><p>这两种请求的传递参数方式都是通过 URL 以 query 形式传参，因此取参数十分简单，不需要额外的框架，直接在方法中调用 <code>req.query.name</code> 即可，其中 name 是参数的名字。</p>
+<p>当然，这两种请求的路由，一个是 <code>app.get()</code> 一个是 <code>app.delete</code> ，这点还是不一样的。</p>
+<h2 id="HTTP请求的头字段内容"><a href="#HTTP请求的头字段内容" class="headerlink" title="HTTP请求的头字段内容"></a>HTTP请求的头字段内容</h2><p>对于http请求头字段中包含的信息，如验证、密码等，在express框架中也可以直接解析，无需借助第三方工具，具体的方法是在中间件或路由的方法中，调用 <code>req.query(&#39;name&#39;)</code> 即可，其中 name 是参数的名字。</p>
+<p>具体到这道题中，因为是验证 token ，所以直接在开头写一个中间件验证密码，如果通过调用 <code>next()</code> 继续处理，否则直接返回403 。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -101,97 +114,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-techblog-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/07/07/techblog-1/" class="article-date">
-  <time datetime="2019-07-07T03:53:16.000Z" itemprop="datePublished">2019-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/07/07/techblog-1/">techblog_1</a>
-    </h1>
+    <a href="/blog/2019/07/07/techblog-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">techblog_1</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数学表达式计算方法"><a href="#数学表达式计算方法" class="headerlink" title="数学表达式计算方法"></a>数学表达式计算方法</h1><p>对于一个以字符串形式输入含有四则运算和括号的数学表达式，如“10+(2*(236/2-1)+2)*9”，其形式称为中缀表达式，这是对人类而言直观的表现形式，但是对机器而言，其结构和规则因为括号和运算符优先级的存在而变得复杂，因此编程计算时，需要将中缀表达式转化为后缀表达式（逆波兰式）。</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2019/07/07/techblog-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jianyutang.github.io/blog/2019/07/07/techblog-1/" data-id="cjxyo94uj0000fou2uooaew8r" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术/">技术</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2019/07/03/test/" class="article-date">
-  <time datetime="2019-07-03T13:14:54.000Z" itemprop="datePublished">2019-07-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/07/03/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于前端小学期"><a href="#关于前端小学期" class="headerlink" title="关于前端小学期"></a>关于前端小学期</h2><p>在上这个小学期之前，我也不能算完全没有接触过前端的内容。之前的离散2大作业就用自己搭建了一个网站展示用图论算法对豆瓣电影数据集的分析，至少给我的感觉是好像也没那么难，刚刚上手时学点基本的规则就能够依葫芦画瓢地做出一些东西来。</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2019/07/03/test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jianyutang.github.io/blog/2019/07/03/test/" data-id="cjxyo94us0003fou2agiwzfp9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/日志/">日志</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
