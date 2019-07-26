@@ -5,20 +5,20 @@
   
 
   
-  <title>test | Tang&#39;s Blog</title>
+  <title>techblog3 | Tang&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于前端小学期在上这个小学期之前，我也不能算完全没有接触过前端的内容。之前的离散2大作业就用自己搭建了一个网站展示用图论算法对豆瓣电影数据集的分析，至少给我的感觉是好像也没那么难，刚刚上手时学点基本的规则就能够依葫芦画瓢地做出一些东西来。">
-<meta name="keywords" content="日志">
+  <meta name="description" content="#关于微信小程序（游戏）联网 在这一次实验中，因为微信小游戏的联网也吃了一点亏，有了一点教训，值得记录下来。">
+<meta name="keywords" content="技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://jianyutang.github.io/blog/2019/07/03/test/index.html">
+<meta property="og:title" content="techblog3">
+<meta property="og:url" content="https://jianyutang.github.io/blog/2019/07/26/techblog3/index.html">
 <meta property="og:site_name" content="Tang&#39;s Blog">
-<meta property="og:description" content="关于前端小学期在上这个小学期之前，我也不能算完全没有接触过前端的内容。之前的离散2大作业就用自己搭建了一个网站展示用图论算法对豆瓣电影数据集的分析，至少给我的感觉是好像也没那么难，刚刚上手时学点基本的规则就能够依葫芦画瓢地做出一些东西来。">
+<meta property="og:description" content="#关于微信小程序（游戏）联网 在这一次实验中，因为微信小游戏的联网也吃了一点亏，有了一点教训，值得记录下来。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-11T12:53:48.778Z">
+<meta property="og:updated_time" content="2019-07-26T13:25:32.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="关于前端小学期在上这个小学期之前，我也不能算完全没有接触过前端的内容。之前的离散2大作业就用自己搭建了一个网站展示用图论算法对豆瓣电影数据集的分析，至少给我的感觉是好像也没那么难，刚刚上手时学点基本的规则就能够依葫芦画瓢地做出一些东西来。">
+<meta name="twitter:title" content="techblog3">
+<meta name="twitter:description" content="#关于微信小程序（游戏）联网 在这一次实验中，因为微信小游戏的联网也吃了一点亏，有了一点教训，值得记录下来。">
   
     <link rel="alternate" href="/blog/atom.xml" title="Tang&#39;s Blog" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-techblog3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2019/07/03/test/" class="article-date">
-  <time datetime="2019-07-03T13:14:54.000Z" itemprop="datePublished">2019-07-03</time>
+    <a href="/blog/2019/07/26/techblog3/" class="article-date">
+  <time datetime="2019-07-26T13:12:50.000Z" itemprop="datePublished">2019-07-26</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      test
+      techblog3
     </h1>
   
 
@@ -87,31 +87,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于前端小学期"><a href="#关于前端小学期" class="headerlink" title="关于前端小学期"></a>关于前端小学期</h2><p>在上这个小学期之前，我也不能算完全没有接触过前端的内容。之前的离散2大作业就用自己搭建了一个网站展示用图论算法对豆瓣电影数据集的分析，至少给我的感觉是好像也没那么难，刚刚上手时学点基本的规则就能够依葫芦画瓢地做出一些东西来。</p>
+        <p>#关于微信小程序（游戏）联网</p>
+<p>在这一次实验中，因为微信小游戏的联网也吃了一点亏，有了一点教训，值得记录下来。</p>
 <a id="more"></a>
 
-<p>不过今天的课的确给了我一些小小的惊讶。最开始老师讲变量类型的时候，讲到三种不同的声明方式：</p>
+<p>首先微信小游戏联网方式有如下四种：</p>
 <ul>
-<li>var</li>
-<li>let</li>
-<li>const</li>
+<li>HTTPS 请求（<a href="https://developers.weixin.qq.com/minigame/dev/api/network/request/wx.request.html" target="_blank" rel="noopener">wx.request</a>）</li>
+<li>上传（<a href="https://developers.weixin.qq.com/minigame/dev/api/network/upload/wx.uploadFile.html" target="_blank" rel="noopener">wx.uploadFile</a>）</li>
+<li>下载（<a href="https://developers.weixin.qq.com/minigame/dev/api/network/download/wx.downloadFile.html" target="_blank" rel="noopener">wx.downloadFile</a>) </li>
+<li>WebSocket 通信（<a href="https://developers.weixin.qq.com/minigame/dev/api/network/websocket/wx.connectSocket.html" target="_blank" rel="noopener">wx.connectSocket</a>）</li>
 </ul>
-<p>我一直也分不清这三个，自己之前全都是从头到尾 <code>var</code> 的，也对此不感兴趣；但是当他讲到<code>var</code> 的生命周期造成的问题时，我才意识到这好像挺严重的，因为出现问题的异步调用的函数我以前从来没有接触过，甚至完全不知道有这种东西的存在，但如果真的哪一天我无意中用到了，恐怕debug会费相当大的力气。就这一件事，我意识到并不能轻松他，不管是html、css还是javascript，还是应该把基本功打的扎实一些。</p>
-<p>因此，我也对这门课产生了比“练手而已”更深的期待：</p>
-<ul>
-<li>语法的基础打牢，踏实地把基本的规则掌握，少犯课堂上例子那样愚蠢的错误；</li>
-<li>掌握常用框架的使用，如 jQuery、vue.js 等；</li>
-<li>体验前端开发完整的流程，熟练使用GitHub与人合作项目。</li>
-</ul>
-<p>总之，既然要学这门课，还是希望自己能少一点浮躁，不要轻视这些技术，至少作为一名训练中的程序员还是要技能树还是应该广一点。</p>
+<p>因为这次实验联网对战我希望保持通信，因此采用了第四种方式。但是，因为直接采用 WebSocket 对信息的处理有些繁琐，没有找到直接发送事件的方法，对json格式的支持也不友好，因此选择了封装了 WebSocket 的socket.io 库。</p>
+<p>但是这个选择（加上不好的习惯）也造成了比较大的麻烦。当项目基本完成，准备在手机上调试时，发现了一个看不懂的报错，网上也没有相关信息，但是微信开发者工具在电脑上模拟完全没有问题，最终只能通过将github上的所有commit用二分查找的方式下载下来真机调试，终于找到了第一次无法进行真机调试的版本，也即完成联网功能的版本，经过搜索，发现是因为微信小游戏不支持原生的socket.io，最终换成了大佬修改过的支持微信的weappsocket.io。这也给我留下了教训，应该第一时间上机调试，不能过于相信开发者工具的模拟。</p>
+<p>同时，超时的机制也给我带来了bug的反馈，因为微信限制最长超时时间为60s，但是理论上匹配时等待用户的时间是没有上限的，因此很容易就会触碰到这个时限导致连接断开，找到问题后解决方案也很简单，在服务端增加一个 setInterval ，每30秒给客户端发送一个 keepconnection 事件即可。</p>
+<p>总之，写完整个小游戏还是很有成就感的，感谢汪神制作的精美界面和游戏效果。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jianyutang.github.io/blog/2019/07/03/test/" data-id="cjyk52gje0008kcu270ilzesv" class="article-share-link">Share</a>
+      <a data-url="https://jianyutang.github.io/blog/2019/07/26/techblog3/" data-id="cjyk52gil0001kcu2l38r40ze" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/日志/">日志</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/技术/">技术</a></li></ul>
 
     </footer>
   </div>
@@ -119,15 +117,11 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2019/07/07/techblog-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          techblog_1
-        
-      </div>
-    </a>
   
+    <a href="/blog/2019/07/11/techblog-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">techblog_2</div>
+    </a>
   
 </nav>
 
